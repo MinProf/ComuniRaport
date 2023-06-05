@@ -1,5 +1,6 @@
 package com.diploma.project.ComuniRaport;
 
+import com.diploma.project.ComuniRaport.enums.ERole;
 import com.diploma.project.ComuniRaport.payload.request.RegisterRequest;
 import com.diploma.project.ComuniRaport.services.AuthService;
 import org.springframework.boot.CommandLineRunner;
@@ -50,6 +51,19 @@ public class ComuniRaportApplication {
 					.eRole(MANAGER)
 					.build();
 			System.out.println("Manager token: " + service.register(manager).getAccessToken());
+
+			var user = RegisterRequest.builder()
+					.firstName("user")
+					.lastName("user")
+					.email("user@mail.com")
+					.password("password")
+					.phone("x")
+					.city("x")
+					.county("x")
+                	.eRole(ERole.USER)
+//					.eRole(MANAGER)
+					.build();
+			System.out.println("User token: " + service.register(user).getAccessToken());
 		};
 	}
 }

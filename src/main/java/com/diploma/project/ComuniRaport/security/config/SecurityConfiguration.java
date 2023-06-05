@@ -53,8 +53,9 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests()
                 .requestMatchers(AUTH_WHITE_LIST)
                     .permitAll()
-                .requestMatchers("/api/v1/report/**")
-                    .hasAnyRole(USER.name(), MANAGER.name())
+//                .requestMatchers("/api/v1/report/**")
+//                    .hasAnyRole(USER.name(), MANAGER.name())
+
                 .requestMatchers("/api/v1/management/**")
                     .hasAnyRole(ADMIN.name(), MANAGER.name())
 

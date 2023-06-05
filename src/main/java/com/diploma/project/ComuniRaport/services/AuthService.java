@@ -43,8 +43,8 @@ public class AuthService {
                 .phone(request.getPhone())
                 .city(request.getCity())
                 .county(request.getCounty())
-                .eRole(ERole.USER)
-                //.eRole(request.getERole())
+                //.eRole(ERole.USER)
+                .eRole(request.getERole())
                 .build();
         var savedUser = userRepository.save(user);
         var jwtToken = jwtService.generateToken(user);

@@ -32,7 +32,8 @@ public class Report {
 
     //private Image image;
 
-    private String location;
+    @Embedded
+    private Location location;
 
     @ManyToOne
     @JoinColumn(name = "user_id")

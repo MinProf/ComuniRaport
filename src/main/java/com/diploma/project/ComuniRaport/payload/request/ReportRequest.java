@@ -2,6 +2,7 @@ package com.diploma.project.ComuniRaport.payload.request;
 
 import com.diploma.project.ComuniRaport.enums.EIssueCategory;
 import com.diploma.project.ComuniRaport.enums.EStatus;
+import com.diploma.project.ComuniRaport.models.Location;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,5 +19,5 @@ public class ReportRequest {
     private EStatus status;
     private LocalDate date;
     private String description;
-    private String location;
+    private Location location;
 }
