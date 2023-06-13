@@ -2,6 +2,7 @@ package com.diploma.project.ComuniRaport.models;
 
 import com.diploma.project.ComuniRaport.enums.EIssueCategory;
 import com.diploma.project.ComuniRaport.enums.EStatus;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -32,8 +33,11 @@ public class Report {
 
     //private Image image;
 
-    @Embedded
-    private Location location;
+    @Column(name = "latitude")
+    private float latitude;
+
+    @Column(name = "longitude")
+    private float longitude;
 
     @ManyToOne
     @JoinColumn(name = "user_id")

@@ -2,7 +2,7 @@ package com.diploma.project.ComuniRaport.payload.request;
 
 import com.diploma.project.ComuniRaport.enums.EIssueCategory;
 import com.diploma.project.ComuniRaport.enums.EStatus;
-import com.diploma.project.ComuniRaport.models.Location;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,7 +17,12 @@ import java.time.LocalDate;
 public class ReportRequest {
     private EIssueCategory issueCategory;
     private EStatus status;
+    @JsonProperty("date")
     private LocalDate date;
+    @JsonProperty("description")
     private String description;
-    private Location location;
+    @JsonProperty("lat")
+    private String latitude;
+    @JsonProperty("lng")
+    private String longitude;
 }

@@ -20,50 +20,50 @@ public class ComuniRaportApplication {
 		SpringApplication.run(ComuniRaportApplication.class, args);
 	}
 
-	@Bean
-	public CommandLineRunner commandLineRunner(
-			AuthService service
-	)
-	{
-		return args -> {
-			var admin = RegisterRequest.builder()
-					.firstName("Admin")
-					.lastName("Admin")
-					.email("admin@mail.com")
-					.password("password")
-					.phone("x")
-					.city("x")
-					.county("x")
-//                .eRole(ERole.USER)
-					.eRole(ADMIN)
-					.build();
-			System.out.println("Admin token: " + service.register(admin).getAccessToken());
-
-			var manager = RegisterRequest.builder()
-					.firstName("Manager")
-					.lastName("Manager")
-					.email("manager@mail.com")
-					.password("password")
-					.phone("x")
-					.city("x")
-					.county("x")
-//                .eRole(ERole.USER)
-					.eRole(MANAGER)
-					.build();
-			System.out.println("Manager token: " + service.register(manager).getAccessToken());
-
-			var user = RegisterRequest.builder()
-					.firstName("user")
-					.lastName("user")
-					.email("user@mail.com")
-					.password("password")
-					.phone("x")
-					.city("x")
-					.county("x")
-                	.eRole(ERole.USER)
+//	@Bean
+//	public CommandLineRunner commandLineRunner(
+//			AuthService service
+//	)
+//	{
+//		return args -> {
+//			var admin = RegisterRequest.builder()
+//					.firstName("Admin")
+//					.lastName("Admin")
+//					.email("admin@mail.com")
+//					.password("password")
+//					.phone("x")
+//					.city("x")
+//					.county("x")
+////                .eRole(ERole.USER)
+//					.eRole(ADMIN)
+//					.build();
+//			System.out.println("Admin token: " + service.register(admin).getAccessToken());
+//
+//			var manager = RegisterRequest.builder()
+//					.firstName("Manager")
+//					.lastName("Manager")
+//					.email("manager@mail.com")
+//					.password("password")
+//					.phone("x")
+//					.city("x")
+//					.county("x")
+////                .eRole(ERole.USER)
 //					.eRole(MANAGER)
-					.build();
-			System.out.println("User token: " + service.register(user).getAccessToken());
-		};
-	}
+//					.build();
+//			System.out.println("Manager token: " + service.register(manager).getAccessToken());
+//
+//			var user = RegisterRequest.builder()
+//					.firstName("user")
+//					.lastName("user")
+//					.email("user@mail.com")
+//					.password("password")
+//					.phone("x")
+//					.city("x")
+//					.county("x")
+//                	.eRole(ERole.USER)
+////					.eRole(MANAGER)
+//					.build();
+//			System.out.println("User token: " + service.register(user).getAccessToken());
+//		};
+//	}
 }

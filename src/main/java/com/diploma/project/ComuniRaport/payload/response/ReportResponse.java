@@ -4,6 +4,7 @@ import com.diploma.project.ComuniRaport.enums.EIssueCategory;
 import com.diploma.project.ComuniRaport.enums.EStatus;
 import com.diploma.project.ComuniRaport.models.Location;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,7 +19,7 @@ import java.time.LocalDate;
 public class ReportResponse {
     private Integer id;
 
-    @JsonProperty("issue_category")
+    @JsonProperty("issueCategory")
     private EIssueCategory issueCategory;
 
     @JsonProperty("status")
@@ -29,9 +30,13 @@ public class ReportResponse {
 
     @JsonProperty("description")
     private String description;
-
-    @JsonProperty("location")
     private Location location;
+
+//    @JsonProperty("lat")
+//    private float latitude;
+//
+//    @JsonProperty("lng")
+//    private float longitude;
 
     @JsonProperty("user_id")
     private Integer userId;

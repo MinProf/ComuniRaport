@@ -14,6 +14,10 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.logout.LogoutHandler;
+import org.springframework.web.cors.CorsConfiguration;
+
+import java.util.Arrays;
+import java.util.List;
 
 import static com.diploma.project.ComuniRaport.enums.ERole.*;
 import static com.diploma.project.ComuniRaport.enums.Permission.*;
@@ -50,11 +54,19 @@ public class SecurityConfiguration {
         httpSecurity
                 .csrf()
                 .disable()
+                .cors()
+                .configurationSource(request-> {
+                    CorsConfiguration configuration = new CorsConfiguration();
+                    configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200/"));
+                    configuration.setAllowedMethods(Arrays.asList("GET","POST", "PUT", "DELETE"));
+                    configuration.setAllowedHeaders(List.of("*"));
+                    return configuration;
+                }).and()
                 .authorizeHttpRequests()
                 .requestMatchers(AUTH_WHITE_LIST)
                     .permitAll()
-//                .requestMatchers("/api/v1/report/**")
-//                    .hasAnyRole(USER.name(), MANAGER.name())
+                .requestMatchers("/api/v1/report/**")
+                    .hasAnyRole(USER.name(), MANAGER.name())
 
                 .requestMatchers("/api/v1/management/**")
                     .hasAnyRole(ADMIN.name(), MANAGER.name())
