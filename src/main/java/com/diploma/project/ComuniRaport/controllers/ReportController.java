@@ -1,5 +1,6 @@
 package com.diploma.project.ComuniRaport.controllers;
 
+import com.diploma.project.ComuniRaport.enums.EStatus;
 import com.diploma.project.ComuniRaport.models.Report;
 import com.diploma.project.ComuniRaport.payload.request.ReportRequest;
 import com.diploma.project.ComuniRaport.payload.response.ReportResponse;
@@ -27,10 +28,10 @@ public class ReportController {
         return ResponseEntity.ok(reportService.getReports());
     }
 
-    @GetMapping("status/{status}")
-    public List<ReportResponse> getReportsByStatus(@PathVariable("status") String status)
+    @PostMapping("/status")
+    public ResponseEntity<ReportResponse> editReport(@RequestBody EStatus status, @RequestBody Integer id)
     {
-        return null;
+        return ResponseEntity.ok(reportService.editReport(status, id));
     }
 
     @PostMapping("/add")
@@ -42,8 +43,8 @@ public class ReportController {
         return ResponseEntity.ok(addedReport);
     }
 
-    @DeleteMapping("delete/report/{id}")
-    @PreAuthorize("hasAuthority('management:delete')")
+    @DeleteMapping("/delete/{id}")
+   // @PreAuthorize("hasAuthority('management:delete')")
     public ResponseEntity<String> deleteReport(@PathVariable("id") Integer id)
     {
         return ResponseEntity.ok(reportService.deleteReport(id));

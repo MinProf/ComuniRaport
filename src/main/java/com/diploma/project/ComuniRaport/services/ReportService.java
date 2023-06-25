@@ -1,5 +1,6 @@
 package com.diploma.project.ComuniRaport.services;
 
+import com.diploma.project.ComuniRaport.enums.EStatus;
 import com.diploma.project.ComuniRaport.models.Location;
 import com.diploma.project.ComuniRaport.models.Report;
 import com.diploma.project.ComuniRaport.models.User;
@@ -45,6 +46,15 @@ public class ReportService {
 
         var response = convertOneReportToResponse(reportRepository.save(report));
         return response;
+    }
+
+    public ReportResponse editReport(EStatus status,Integer id)
+    {
+
+        reportRepository.setReportStatusById(status, id);
+
+        return convertOneReportToResponse(reportRepository.findById(id).orElseThrow());
+
     }
 
     public String deleteReport(Integer id)

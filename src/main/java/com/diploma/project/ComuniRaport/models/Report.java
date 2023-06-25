@@ -31,8 +31,6 @@ public class Report {
 
     private String description;
 
-    //private Image image;
-
     @Column(name = "latitude")
     private float latitude;
 
